@@ -1,0 +1,107 @@
+.button {
+    border: none;
+    border-radius: 20rem;
+    padding: 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #936133;
+        color:white;
+    }
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background-color: white;
+    padding: 20px;
+    width: 400px;
+    max-width: 80%;
+    font-family: Poppins, sans-serif;
+    position: relative;
+}
+
+.closeButton {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: #5B5B5B;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 2px;
+    cursor: pointer;
+
+    // margin-top: 20px;
+    &:hover {
+        background-color: rgb(161, 40, 40);
+    }
+}
+
+.closeMark {
+    width: 30px;
+    height: 30px;
+}
+
+.title {
+    color: #262425;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.stringData {
+    display: flex;
+}
+
+.dataTitle {
+    color: #9A8D77;
+    font-size: 14px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.data,
+.betweenTitle,
+.betweenData,
+.betweenTitleSpecial,
+.betweenDataSpecial {
+    color: #262425;
+    font-size: 14px;
+    padding: 0 0 0 3px;
+    font-weight: 400;
+}
+
+.betweenString {
+    display: flex;
+    justify-content: space-between;
+}
+
+.space {
+    margin-top: 4rem;
+}
+
+.line {
+    border: 1px #9A8D77 solid;
+    margin-top: 0;
+}
+
+.betweenTitleSpecial,
+.betweenDataSpecial {
+    font-weight: 600;
+    margin-bottom: 5rem;
+}

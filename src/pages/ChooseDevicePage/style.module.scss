@@ -1,0 +1,102 @@
+.text {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: 32px;
+}
+
+.arrowBack {
+    width: 30px;
+    height: 30px;
+    color: #F9F1E4;
+    margin-top: 1rem;
+    cursor: pointer;
+
+    &:hover {
+        color: #936133;
+    }
+}
+
+
+
+.specialRow {
+    margin-left: 8rem;
+}
+
+.button {
+    background-color: transparent;
+    border: 1px solid #5B5B5B;
+    width: 17rem;
+    height: 17rem;
+    margin: 0.5rem;
+
+    &:hover {
+        color: #F9F1E4;
+        border-color: #F9F1E4;
+
+        .buttonIcon {
+            fill: #F9F1E4;
+        }
+
+        .buttonName {
+            color: #F9F1E4;
+        }
+    }
+
+    .buttonName {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 48px;
+        color: #5B5B5B;
+        margin-top: 1.25rem;
+    }
+
+    &.selected {
+        border-color: #F9F1E4;
+        background-color: #F9F1E4;
+
+        .buttonIcon {
+            fill: #936133;
+        }
+
+        .buttonName {
+            color: #262425;
+        }
+
+        // Перезаписання стилів hover для вибраної кнопки
+        &:hover {
+            color: #262425; 
+            border-color: #F9F1E4; 
+
+            .buttonIcon {
+                fill: #936133; 
+            }
+
+            .buttonName {
+                color: #262425; 
+            }
+        }
+    }
+}
+
+.saveButton {
+    background-color: #F9F1E4;
+    color: #262425;
+    border: none;
+    border-radius: 20rem;
+    padding: 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    cursor: pointer;
+
+    &.active  {
+        background-color: #936133;
+        color: #F9F1E4;
+    }
+}
+
+.buttonRow {
+    margin-right: 1rem;
+}

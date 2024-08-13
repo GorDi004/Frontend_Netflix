@@ -1,0 +1,60 @@
+body {
+    background-color: #141414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    // width: 200px;
+
+}
+
+.netflix {
+    margin: 0;
+    padding: 0;
+    font-size: 20rem;
+
+    h1 {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.letterN {
+    position: relative;
+    width: 200px;
+    height: 250px;
+
+}
+
+.letterN1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #EFE6DC;
+    clip-path: polygon(0 29%, 21% 57%, 22% 100%, 0% 100%);
+}
+
+.letterN2 {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    background-color: #EFE6DC;
+    clip-path: polygon(0 0, 17% 0, 100% 81%, 100% 100%, 87% 100%, 0 16%);
+}
+
+.letterN3 {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    background-color: #EFE6DC;
+    clip-path: polygon(72% 0, 100% 0%, 100% 66%, 72% 41%);
+}

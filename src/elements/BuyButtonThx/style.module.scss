@@ -1,0 +1,49 @@
+.button {
+    background-color: #262425;
+    color: #F9F1E4;
+    border: none;
+    border-radius: 20rem;
+    padding: 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    &:hover {
+        background-color: #936133;
+    }
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background-color: #F9F1E4;
+    color: #262425;
+    padding: 5rem 0;
+    border: none;
+    width: 300px;
+    max-width: 80%;
+    text-align: center;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38px;
+    margin-bottom: 1rem;
+}
+
+.text {
+    margin-top:1rem;
+    margin: 0;
+    padding: 0;
+}

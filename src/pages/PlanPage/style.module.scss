@@ -1,0 +1,74 @@
+.container {
+    width: 90vw;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+}
+
+.arrowBack {
+    width: 30px;
+    height: 30px;
+    color: #F9F1E4;
+    cursor: pointer;
+    &:hover {
+        color: #936133;
+    }
+}
+
+.title {
+    font-size: 32px;
+    text-align: left;
+    color: #F9F1E4;
+    font-size: 32px;
+    margin-top: 1.4rem;
+    margin-bottom: 2rem;
+    width: 672px;
+}
+
+.col {
+    color: white;
+}
+
+.row {
+    display: flex;
+    align-items: center !important;
+    justify-content: center;
+}
+
+.line {
+    margin: 0;
+}
+
+.rowTitle {
+    width: 200px;
+    font-weight: 400;
+    padding: 0.25rem;
+    margin: 0;
+}
+
+.colTitle {
+    width: 190px;
+    text-align: center;
+}
+
+.specialColTitle {
+    border: 1px solid white;
+    border-radius: 20rem;
+    padding: 1rem;
+}
+
+.rowContext {
+    text-align: center;
+    width: 190px;
+    font-weight: 600;
+
+}
+
+.checkMark {
+    width: 24px;
+    height: 24px;
+}
+
+.closeMark {
+    width: 32px;
+    height: 32px;
+}
