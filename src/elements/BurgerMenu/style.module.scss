@@ -1,0 +1,148 @@
+@import '../../styles/variables.scss';
+
+body::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.sidebar {
+    position: fixed;
+    /* Фіксоване позиціонування */
+    top: 0;
+    left: 0;
+    height: 100vh;
+    /* Повна висота */
+    // background-color: #F9F1E4;
+    overflow-y: auto;
+    /* Вертикальний скрол для довгого контенту */
+    transition: width 0.3s ease;
+    z-index: 1;
+
+
+}
+
+.sidebar-open {
+    width: 250px;
+    /* Ширина відкритого сайдбару */
+}
+
+.sidebar-closed {
+    width: 50px;
+    /* Ширина закритого сайдбару */
+}
+
+.btn-link {
+    border: none;
+    padding: 0;
+}
+
+.closeModalButton {
+    color: #262425;
+    margin-left: 15vw;
+    background-color: #F9F1E4;
+}
+
+.openModalButton {
+    color: $primary-color;
+    background-color: none ;
+    margin-left:9rem;
+}
+
+.header{
+    display:flex;
+
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.contentArea {
+    background-color: green;
+    margin: 1rem;
+    margin-left: 4rem;
+    z-index: 10;
+}
+
+h1 {
+    color: #f8f9fa;
+    width: 100%;
+
+
+}
+
+
+.list {
+    background-color: #F9F1E4;
+    margin-top: 2rem;
+}
+
+.listPoint {
+    padding-left: 1rem;
+    margin: 8px 0;
+
+    a {
+        color: #262425;
+        text-decoration: none;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+        font-weight: 400;
+
+        svg {
+            margin-right: 5px;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+
+.dropdown {
+    display: inline-block;
+
+    .dropdownToggle {
+        background-color: $primary-color;
+        color: $background-color;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        // width: 200px;
+        transition: background-color 0.3s ease;
+
+    }
+
+    .dropdownMenu {
+        display: block;
+        background-color: $primary-color;
+        // min-width: 200px;
+        padding: 0;
+        margin: 0;
+        z-index: 1000;
+
+        .dropdownItem {
+            padding: 10px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: $primary-color 0.2s ease;
+
+        }
+    }
+}
+
+.awards {
+    padding-left: 0;
+}
+

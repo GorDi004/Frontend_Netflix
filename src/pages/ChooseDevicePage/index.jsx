@@ -12,6 +12,9 @@ const ChooseDevicePage = () => {
     const handleBack = () => {
         navigate('/'); // Перенаправлення на PlanPage
     };
+    const handleHomePage = () => {
+        navigate('/home'); // Перенаправлення на HomePage
+    };
 
     const deviceCountMap = {
         zero: 0,
@@ -131,7 +134,7 @@ const ChooseDevicePage = () => {
                 </div>
                 <div className={`row justify-content-end g-4 ${style.buttonRow}`}>
                     <div className='col col-lg-3'>
-                        <button type="button" className={isAllDevicesSelected ? `${style.saveButton} ${style.active}` : style.saveButton}>Save</button>
+                        <button type="button" onClick={handleHomePage} className={isAllDevicesSelected ? `${style.saveButton} ${style.active}` : style.saveButton}>Save</button>
                     </div>
                 </div>
             </div>

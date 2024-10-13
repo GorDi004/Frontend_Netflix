@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BuyButtonThx from './elements/BuyButtonThx';
 import ChooseDevicePage from './pages/ChooseDevicePage';
+import HomePage from './pages/HomePage';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/" element={<PlanPage />} />
                 <Route path="/device" element={<ChooseDevicePage />} />
                 <Route path="/thank-you" element={<BuyButtonThx />} />
+                <Route path="/home" element={<HomePage />} />
             </Routes>
             
         </Router>
