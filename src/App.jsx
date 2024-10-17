@@ -9,25 +9,33 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BuyButtonThx from './elements/BuyButtonThx';
 import ChooseDevicePage from './pages/ChooseDevicePage';
 import HomePage from './pages/HomePage';
+import MoviePage from './pages/MoviePage';
+import AuthProvider from './elements/AuthProvider';
+import TheRoutes from './elements/TheRoutes';
+
+
+
 
 const App = () => {
+
   return (
     <div className={style.container}>
-      {/* <NetflixTitle/> */}
+      <AuthProvider>
+        <TheRoutes />
+      </AuthProvider>
 
-      {/* <LoginPage/> */}
-      {/* <SignInPage/> */}
-      <Router>
-            <Routes>
-                <Route path="/sign-in" element={<SignInPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/" element={<PlanPage />} />
-                <Route path="/device" element={<ChooseDevicePage />} />
-                <Route path="/thank-you" element={<BuyButtonThx />} />
-                <Route path="/home" element={<HomePage />} />
-            </Routes>
-            
-        </Router>
+
+      {/* <Router>
+        <Routes>
+          <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<PlanPage />} />
+          <Route path="/device" element={<ChooseDevicePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/:type/:id" element={<MoviePage />} />
+        </Routes>
+
+      </Router> */}
     </div>
   );
 }

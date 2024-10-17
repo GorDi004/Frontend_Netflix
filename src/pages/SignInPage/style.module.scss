@@ -1,19 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+.page {
+    display: flex;
+}
 .body {
     background-color: rgb(38, 36, 37);
-    height: 100vh;
-    width: 100vw;
+    height: auto;
+    width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 3rem;
     font-family: "Poppins", sans-serif;
+}
+
+
+.image{
+    width: 50vw;
+    height: auto;
+    object-fit:cover;
+    
 }
 
 .text {
     color: #F9F1E4;
     text-align: center;
+}
+
+.textActorOrDirector {
+    color: #F9F1E4;
+    text-align: left;
 }
 
 .netflix {
@@ -26,7 +42,9 @@
     width: 20rem;
     height: 5.5rem;
     background-size: contain;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 7rem;
+
 }
 
 .darkInput {
@@ -36,6 +54,10 @@
     border-radius: 0px !important;
 
     &::placeholder {
+        color: #B0A9A0 !important;
+    }
+
+    .form-control {
         color: #B0A9A0 !important;
     }
 }
@@ -49,26 +71,27 @@
 }
 
 .button {
-    background-color: #F9F1E4 !important;
+    background-color: #800020 !important;
     width: 100%;
     border-radius: 0 !important;
     padding: 1rem !important;
     margin: 1rem 0;
+    color: #F9F1E4 !important;
 }
 
-.button2 {
-    background-color: rgb(38, 36, 37) !important;
-    width: 100%;
-    border-radius: 0 !important;
-    padding: 1rem !important;
-    margin: 1rem 0;
-    border-color: #F9F1E4 !important;
-    color: #F9F1E4 !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
+// .button2 {
+//     background-color: rgb(38, 36, 37) !important;
+//     width: 100%;
+//     border-radius: 0 !important;
+//     padding: 1rem !important;
+//     margin: 1rem 0;
+//     border-color: #F9F1E4 !important;
+//     color: #F9F1E4 !important;
+//     display: flex !important;
+//     flex-direction: row !important;
+//     align-items: center !important;
+//     justify-content: center !important;
+// }
 
 .googleLogo {
     background-image: url("../../../public/googleLogo.png");

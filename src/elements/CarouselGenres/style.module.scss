@@ -1,0 +1,46 @@
+@import '../../styles/variables.scss';
+
+.carouselContainer {
+    display: flex;
+    align-items: center;
+    margin: 0 9rem;
+    overflow: hidden; // Сховати елементи, які виходять за межі контейнера
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.3s ease; // Додайте анімацію переходу
+}
+
+.carouselItem {
+    border-radius: 22px;
+    background-color: $the-grey-color;
+    color: $primary-color;
+    padding: 6px 25px;
+    min-width: 100px; // Задайте ширину для елементів
+    flex: 1; // Додайте flex для адаптивності
+    margin: 0 5px; // Відстань між жанрами
+    cursor: pointer;
+}
+
+.selected {
+    background-color: $primary-color;
+    color: black;
+}
+
+
+.carouselItemTitle {
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; // Задайте потрібний розмір
+    padding: 10px;
+}

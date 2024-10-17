@@ -1,0 +1,56 @@
+@import '../../styles/variables.scss';
+
+// .tabs {
+//     margin: 0 9rem;
+//     display: flex;
+//     justify-content: space-between;
+// }
+
+.tabsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 9rem;
+}
+
+.tabs {
+    display: flex;
+    align-items: center;
+    margin: 0 4.25rem;
+
+    p {
+        margin-bottom: 0;
+        color: $grey-color;
+        margin-left: 10px;
+        font-size: 16px;
+    }
+}
+
+.activeTab {
+    font-weight: 700;
+    position: relative; // Для позиціонування крапки
+
+    p {
+        font-size: 20px !important;
+    }
+
+    .icon {
+        width: 27px !important;
+        height: 27px !important;
+    }
+
+
+    &::after {
+        content: ''; // Додати крапку
+        display: block;
+        width: 6px; // Ширина крапки
+        height: 6px; // Висота крапки
+        border-radius: 50%; // Зробити крапку круглою
+        background-color: $light-grey-color; // Колір крапки
+        position: absolute;
+        bottom: -5px; // Відстань від вкладки
+        left: 55%; // Центрування крапки
+        transform: translateX(-50%); // Центрування крапки
+    }
+
+}
