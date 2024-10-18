@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import style from './style.module.scss'
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { FaCaretDown, FaCaretUp } from 'react-icons/fa'; // Піктограми для стрілок
-import SearchBar from '../SearchBar';
+import { FaCaretDown, FaCaretUp } from 'react-icons/fa'; 
+import { useNavigate } from 'react-router-dom';
 
 const BurgerMenu = () => {
+    const navigate = useNavigate();
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const toggleMenu = () => {
@@ -46,6 +47,10 @@ const BurgerMenu = () => {
     const toggleDropdownProfiles = () => {
         setIsOpenProfiles(!isOpenProfiles);
     };
+
+    const handleCasting = () => {
+        navigate('/casting');
+    }
 
     return (
         <>
@@ -207,7 +212,7 @@ const BurgerMenu = () => {
                         </ li>
 
                         {/* casting */}
-                        < li className={`${style.listPoint}`}>
+                        < li onClick={handleCasting}  className={`${style.listPoint}`}>
                             <a href="#" className="d-flex py-2">
                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_54_120)">

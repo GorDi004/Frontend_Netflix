@@ -7,6 +7,8 @@ import LoginPage from './../../pages/LoginPage';
 import ChooseDevicePage from '../../pages/ChooseDevicePage';
 import PlanPage from '../../pages/PlanPage';
 import HomePage from '../../pages/HomePage';
+import CastingPage from '../../pages/CastingPage';
+import MoviePage from '../../pages/MoviePage';
 
 const TheRoutes = () => {
     const { token } = useAuth();
@@ -50,6 +52,14 @@ const TheRoutes = () => {
         {
             path: "/home",
             element: <HomePage />,
+        },
+        {
+            path: "/:type/:id",
+            element: <MoviePage />,
+        },
+        {
+            path: "/casting",
+            element: <CastingPage />,
         },
         {
             path: "/device",

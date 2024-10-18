@@ -11,7 +11,7 @@ const SortedFilms = ({ films, selectedGenres }) => {
             const genreArray = selectedGenres.length > 0 ? selectedGenres : [];
 
             try {
-                const rawResponse = await fetch(`https://localhost:7118/api/${films}/GetAll?take=40`, {
+                const rawResponse = await fetch(`https://localhost:7118/api/${films}/GetAll?take=10`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

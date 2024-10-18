@@ -1,0 +1,134 @@
+@import '../../styles/variables';
+
+.tabs{
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
+    border-bottom:transparent;
+    width:60vw;
+    height:auto;
+    margin-top:60rem;
+}
+
+.tabName{
+    cursor: pointer;
+    color: $primary-color;
+    margin-bottom:0;
+    font-size:14px;
+    font-weight:500;
+}
+
+.tabContentName{
+    color: $primary-color;
+    margin-bottom:7px;
+    margin-top: 50px;
+    font-size:32px;
+    font-weight:600;
+    width:415px;
+}
+
+.tabContent{
+    font-size: 16px;
+    line-height: 24px;
+    color: $primary-color;
+    margin-bottom: 0;
+    font-weight:400;
+    width:691px;
+}
+
+.whiteBlock{
+    background-color: $light-grey-color;
+    width:1014px;
+    height:auto;
+}
+
+.textBlock1{
+    color:$background-color;
+    margin:17px;
+    line-height: 21px;
+}
+
+.card{
+    background-color: $primary-color;
+    color:$background-color;
+    width:884px;
+    margin-left:22px;
+    padding:26px;
+    padding-top:0;
+    border-radius: 6px;
+    margin-bottom:24px;
+
+}
+
+.title{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left:22px;
+    margin-right:22px;
+    margin-top: 22px;
+}
+
+.cardTitle{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    color: $background-color;
+    width:511px;
+}
+
+.btnSubmit{
+    width:314px;
+    height:43px;
+    background-color: $background-color;
+    color:$primary-color;
+    border-radius: 31px;
+    border:none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.columns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left:22px;
+    margin-right:22px;
+    margin-top: 22px;
+}
+
+.subTitle{
+    width:298px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+    color: $background-color;
+}
+
+.commercial{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+}
+
+.label{
+    color:#B69797;
+    font-size:14px;
+    font-weight:500;
+    line-height: 21px;
+}
+
+.info{
+    font-size:14px;
+    font-weight:300;
+    line-height: 21px;
+    color:$background-color;
+    width:188px;
+    margin-left:50px;
+}
+
+.row{
+    display:flex;
+}
