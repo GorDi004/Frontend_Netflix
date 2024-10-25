@@ -3,10 +3,11 @@
 .page {
     display: flex;
 }
+
 .body {
     background-color: rgb(38, 36, 37);
     height: auto;
-    width: 50vw;
+    width: 45vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,16 +16,21 @@
 }
 
 
-.image{
-    width: 50vw;
+.image {
+    width: 55vw;
     height: auto;
-    object-fit:cover;
-    
+    object-fit: cover;
+
+}
+
+.textMain {
+    color: #F9F1E4;
+    text-align: center;
 }
 
 .text {
     color: #F9F1E4;
-    text-align: center;
+    text-align: left;
 }
 
 .textActorOrDirector {
@@ -38,13 +44,11 @@
 }
 
 .netflixLogo {
-    background-image: url("../../../public/netflix.png");
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png");
     width: 20rem;
     height: 5.5rem;
-    background-size: contain;
+    background-size: cover;
     margin-bottom: 1rem;
-    margin-top: 7rem;
-
 }
 
 .darkInput {

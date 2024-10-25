@@ -3,6 +3,8 @@ import style from './style.module.scss'
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../../elements/Header';
 import { IoIosArrowDropleftCircle } from 'react-icons/io';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 
 
 const MoviePage = () => {
@@ -62,7 +64,7 @@ const MoviePage = () => {
         fetchMovieData();
     }, [id, type]);
     if (loading) {
-        return <p>Loading...</p>;
+        return <Spin indicator={<LoadingOutlined spin />} size="large" />;
     }
 
     if (error) {

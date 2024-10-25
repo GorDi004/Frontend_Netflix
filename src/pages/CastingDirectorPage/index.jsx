@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import style from './style.module.scss';
+import React, { useEffect, useState } from 'react'
+import style from './style.module.scss'
 import { Checkbox, Tabs } from 'antd';
 import BurgerMenu from '../../elements/BurgerMenu';
 import UserModal from '../../elements/UserModal';
@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import CastingCard from '../../elements/CastingCard';
 import CastingTabs from '../../elements/CastingTabs';
 
-const CastingPage = () => {
+const CastingDirectorPage = () => {
     const navigate = useNavigate();
     const handleToLogin = () => {
         localStorage.removeItem('authToken');
@@ -27,7 +27,7 @@ const CastingPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post('https://localhost:7118/api/CastingCalls/GetAll', {}, {
+                const response = await axios.post('https://localhost:7118/api/CastingCalls/GetCastingCallsByAuthenticatedCastingDirectorId', {}, {
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
@@ -109,13 +109,11 @@ const CastingPage = () => {
 
         return locationMatch && projectTypeMatch && roleTypeMatch;
     });
-
     return (
         <>
             <div className={style.containerItem}>
                 <BurgerMenu />
                 <div className={style.header}>
-                    <CastingTabs activeTab={activeTab} setActiveTab={setActiveTab} />
                     <UserModal />
                 </div>
                 <div className={style.whiteBlock}>
@@ -150,6 +148,6 @@ const CastingPage = () => {
             </div>
         </>
     );
-};
+}
 
-export default CastingPage;
+export default CastingDirectorPage;

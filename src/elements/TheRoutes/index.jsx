@@ -1,14 +1,22 @@
-import React from 'react'
+import React from 'react';
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useAuth } from "./../AuthProvider";
-import { ProtectedRoute } from "./../ProtectedRoute";
+import CastingBillboardPage from '../../pages/CastingBillboardPage';
+import CastingDirectorPage from '../../pages/CastingDirectorPage';
+import CastingPage from '../../pages/CastingPage';
+import CastingSubmissionPage from '../../pages/CastingSubmissionPage';
+import ChooseDevicePage from '../../pages/ChooseDevicePage';
+import CreateActorProfilePage from '../../pages/CreateActorProfilePage';
+import CreateCastingPage from '../../pages/CreateCastingPage';
+import DirectorProfilePage from '../../pages/DirectorProfilePage';
+import GetSartedPage from '../../pages/GetStartedPage';
+import HomePage from '../../pages/HomePage';
+import MoviePage from '../../pages/MoviePage';
+import PlanPage from '../../pages/PlanPage';
+import ReturnHomePage from '../../pages/ReturnHomePage';
 import SignInPage from '../../pages/SignInPage';
 import LoginPage from './../../pages/LoginPage';
-import ChooseDevicePage from '../../pages/ChooseDevicePage';
-import PlanPage from '../../pages/PlanPage';
-import HomePage from '../../pages/HomePage';
-import CastingPage from '../../pages/CastingPage';
-import MoviePage from '../../pages/MoviePage';
+import { useAuth } from "./../AuthProvider";
+import { ProtectedRoute } from "./../ProtectedRoute";
 
 const TheRoutes = () => {
     const { token } = useAuth();
@@ -33,12 +41,12 @@ const TheRoutes = () => {
             children: [
                 {
                     path: "/",
-                    element: <div>User Home Page</div>,
+                    element: <HomePage />,
                 },
-                {
-                    path: "/device",
-                    element: <ChooseDevicePage />,
-                },
+                // {
+                //     path: "/device",
+                //     element: <ChooseDevicePage />,
+                // },
                 {
                     path: "/logout",
                     element: <div>Logout</div>,
@@ -60,6 +68,38 @@ const TheRoutes = () => {
         {
             path: "/casting",
             element: <CastingPage />,
+        },
+        {
+            path: "/create-casting",
+            element: <CreateCastingPage />,
+        },
+        {
+            path: "/casting-director",
+            element: <CastingDirectorPage />,
+        },
+        {
+            path: "/create-actor-profile/:castingId",
+            element: <CreateActorProfilePage />,
+        },
+        {
+            path: "/director-profile",
+            element: <DirectorProfilePage />,
+        },
+        {
+            path: "/casting-billboard/:castingId",
+            element: <CastingBillboardPage />,
+        },
+        {
+            path: "/casting-submission/:castingId",
+            element: <CastingSubmissionPage />,
+        },
+        {
+            path: "/get-started",
+            element: <GetSartedPage />,
+        },
+        {
+            path: "/return-homepage",
+            element: <ReturnHomePage />,
         },
         {
             path: "/device",

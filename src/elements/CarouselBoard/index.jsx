@@ -57,7 +57,7 @@ const CarouselBoard = () => {
     <Carousel afterChange={onChange}>
       {films.map((film, index) => (
         <div key={index}>
-          <div style={{backgroundImage: `url(${film.pictureUrl})`}} className={style.contentArea}>
+          <div style={{ backgroundImage: `url(${film.pictureUrl})` }} className={style.contentArea}>
             <p className={style.filmDuration}>Duration: {minutes[index]}m</p>
             <h1 className={style.filmTitle}>{film.name}</h1>
             <div className={style.filmInfo}>

@@ -13,7 +13,7 @@ const PlanPage = () => {
     const navigate = useNavigate();
 
     const handleBack = () => {
-        navigate('/device'); // Перенаправлення на DevicePage
+        navigate('/login'); // Перенаправлення на LoginPage
     };
     return (
         <>

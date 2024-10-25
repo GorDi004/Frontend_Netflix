@@ -1,19 +1,12 @@
 @import '../../styles/variables.scss';
 
-body::-webkit-scrollbar {
-    width: 0 !important
-}
 
 .sidebar {
     position: fixed;
-    /* Фіксоване позиціонування */
     top: 0;
     left: 0;
     height: 100vh;
-    /* Повна висота */
-    // background-color: #F9F1E4;
     overflow-y: auto;
-    /* Вертикальний скрол для довгого контенту */
     transition: width 0.3s ease;
     z-index: 1;
 
@@ -22,12 +15,10 @@ body::-webkit-scrollbar {
 
 .sidebar-open {
     width: 250px;
-    /* Ширина відкритого сайдбару */
 }
 
 .sidebar-closed {
     width: 50px;
-    /* Ширина закритого сайдбару */
 }
 
 .btn-link {
@@ -63,7 +54,6 @@ body::-webkit-scrollbar {
 }
 
 .contentArea {
-    background-color: green;
     margin: 1rem;
     margin-left: 4rem;
     z-index: 10;

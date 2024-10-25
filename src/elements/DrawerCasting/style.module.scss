@@ -1,0 +1,51 @@
+@import '../../styles/variables';
+
+.drawer {
+    width: 574px;
+}
+
+.logo {
+    width: 145px;
+    height: 54px;
+}
+
+.tabContentName {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 37.5px;
+    color: $background-color;
+    margin-bottom: 0;
+    margin-top: 100px;
+}
+
+.btnSubmit {
+    width: 314px;
+    height: 43px;
+    background-color: $background-color;
+    color: $primary-color;
+    border-radius: 31px;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 1rem;;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.question{
+    margin:10px 0;
+}
+
+.buttonYes {
+    background-color: $background-color;
+    color: $primary-color;
+    border-radius: 31px;
+    width: 177px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    margin: 10px 0;
+}

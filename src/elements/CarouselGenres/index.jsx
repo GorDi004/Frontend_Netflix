@@ -25,40 +25,48 @@ const CarouselGenres = ({ onGenreChange }) => {
         }
     };
 
-
     useEffect(() => {
-        const fetchGenres = async () => {
-            try {
-                const response = await fetch(`https://localhost:7118/api/Genre/GetAll`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ /* дані для POST, якщо потрібні */ }),
-                });
+        const cachedGenres = localStorage.getItem('genres');
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+        if (cachedGenres) {
+            console.log('Using cached genres');
+            setGenres(JSON.parse(cachedGenres));
+        } else {
+            const fetchGenres = async () => {
+                try {
+                    const response = await fetch(`https://localhost:7118/api/Genre/GetAll`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ /* дані для POST, якщо потрібні */ }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    console.log('Response from API:', data);
+
+                    // Перевірка, чи є data масивом
+                    if (Array.isArray(data.content)) {
+                        setGenres(data.content);
+                        localStorage.setItem('genres', JSON.stringify(data.content)); // Збереження в localStorage
+                    } else {
+                        console.error('Expected an array but got:', data);
+                    }
+                } catch (error) {
+                    console.error(error);
                 }
+            };
 
-                const data = await response.json();
-                console.log('Response from API:', data);
-
-                // Перевірка, чи є data масивом
-                if (Array.isArray(data.content)) {
-                    setGenres(data.content);
-                } else {
-                    console.error('Expected an array but got:', data);
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchGenres();
+            fetchGenres();
+        }
     }, []);
 
     console.log("Genres:", genres);
+
     const handleSelectGenre = (genreName) => {
         if (selectedGenres.includes(genreName)) {
             // Якщо жанр вже вибрано, видаляємо його

@@ -33,7 +33,7 @@ const SignInPage = () => {
         try {
             const response = await axios.post('https://localhost:7118/auth/register', formData);
             console.log('Registration successful', response.data);
-            navigate('/login');
+            navigate('/plan');
         } catch (error) {
             console.error('Registration failed', error.response?.data);
         }
@@ -46,7 +46,7 @@ const SignInPage = () => {
                     <div className={style.netflix}>
                         <div className={style.netflixLogo}></div>
                     </div>
-                    <h1 className={style.text}>Sign In</h1>
+                    <h1 className={style.textMain}>Sign In</h1>
                     <form className='row g-1 need-validation' onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label htmlFor="firstNameInput" className={`form-label ${style.text}`}>First name</label>

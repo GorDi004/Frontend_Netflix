@@ -1,0 +1,40 @@
+@import '../../styles/variables';
+
+.tabs {
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
+    background-color: $background-color;
+    border-bottom: transparent;
+    width: 80vw;
+    height: auto;
+    // margin-top: 100rem;
+}
+
+.tabName {
+    cursor: pointer;
+    color: $primary-color;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.tabContentName {
+    color: $primary-color;
+    margin-bottom: 7px;
+    margin-top: 50px;
+    font-size: 32px;
+    font-weight: 600;
+    width: 415px;
+    text-align: left;
+}
+
+.tabContent {
+    font-size: 16px;
+    line-height: 24px;
+    color: $primary-color;
+    margin-bottom: 0;
+    font-weight: 400;
+    width: 691px;
+    text-align: left;
+}

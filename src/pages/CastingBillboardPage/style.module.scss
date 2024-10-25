@@ -1,0 +1,113 @@
+@import '../../styles/variables';
+
+.background {
+    background-color: #262425;
+}
+
+.container {
+    width: 100vw;
+    padding: 1rem;
+}
+
+.logo {
+    height: 54px;
+}
+
+
+.block {
+    background-color: #343434;
+    // width: 95rem;
+    margin: 10px;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.line {
+    background-color: #343434;
+}
+
+.title {
+    font-family: 'Poppins';
+    font-size: 25px;
+    color: #f9f1e4;
+    margin: 0px;
+    text-align: left;
+}
+
+.pageTitle {
+    font-weight: 600;
+    font-family: 'Poppins';
+    font-size: 32px;
+    color: #800020;
+    text-align: left;
+
+}
+
+.dateBlock {
+    display: flex;
+    flex-direction: row;
+    background-color: #515151;
+    padding: 5px;
+    border-radius: 6px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.text {
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: #f9f1e4;
+    font-weight: 400;
+    margin: 0px;
+    margin-top: 5px;
+    text-align: left;
+
+}
+
+.textDate {
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: #f9f1e4;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.marginStyle {
+    margin: 10px 0px 10px 0px;
+}
+
+.sectionTitle {
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: #f9f1e4;
+    font-weight: 600;
+    margin: 0px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    text-align: left;
+
+}
+
+.rowDirection {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.marginLeft {
+    margin-left: 50px;
+}
+
+.submitToRoleButton {
+    background-color: #800020;
+    color: #f9f1e4;
+    width: 230px;
+    height: 43px;
+    border-radius: 31px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Poppins';
+    display: block;
+    margin-left: auto;
+}

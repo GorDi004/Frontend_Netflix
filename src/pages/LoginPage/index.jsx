@@ -1,34 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Додаємо axios для запитів
+import axios from 'axios';
 import style from './style.module.scss';
 
 const LoginPage = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState(''); // Для зберігання повідомлень про помилки
+    const [errorMessage, setErrorMessage] = useState('');
+
+    // Використовуємо useEffect, щоб перевірити, чи вже є авторизація в localStorage
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            // Якщо токен є, перенаправляємо користувача на планову сторінку
+            navigate('/home');
+        }
+    }, [navigate]);
 
     const handleSignIn = async (e) => {
         e.preventDefault(); // Запобігаємо перезавантаженню сторінки
 
         try {
             const response = await axios.post('https://localhost:7118/auth/login', {
-                email,
-                password,
+                email: email,
+                password: password,
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
 
             if (response.status === 200) {
-                // Успішний логін, перенаправляємо користувача на PlanPage
+                // Успішний логін, зберігаємо токен в localStorage
+                localStorage.setItem('authToken', response.data.token); // Збереження токену
+
                 console.log('Login successful');
-                navigate('/plan');
+                navigate('/home');
             }
         } catch (error) {
-            // Якщо помилка, показуємо повідомлення користувачу
             setErrorMessage('Login failed. Please check your credentials.');
             console.error('Login error:', error);
         }
     };
+
     const handleSignUp = () => {
         navigate('/sign-in');
     };
@@ -40,12 +55,12 @@ const LoginPage = () => {
                     <div className={style.netflix}>
                         <div className={style.netflixLogo}></div>
                     </div>
-                    <h1 className={style.text}>Welcome back</h1>
-                    <p className={style.text} style={{ marginTop: '1rem' }}>
+                    <h1 className={style.textMain}>Welcome back</h1>
+                    <p className={style.textMain} style={{ marginTop: '1rem' }}>
                         The sooner you turn on Netflix, the sooner you get a ticket to the world of entertainment!
                     </p>
 
-                    <form onSubmit={handleSignIn}> {/* Вказуємо handleSignIn на submit форми */}
+                    <form onSubmit={handleSignIn}>
                         <div className="mb-3">
                             <label htmlFor="emailInput" className={`form-label ${style.text}`}>Email</label>
                             <input
@@ -53,8 +68,8 @@ const LoginPage = () => {
                                 className={`form-control ${style.darkInput}`}
                                 id="emailInput"
                                 placeholder="Enter your email"
-                                value={email} // Зв'язуємо з email state
-                                onChange={(e) => setEmail(e.target.value)} // Оновлюємо state
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="mb-3">
@@ -64,21 +79,20 @@ const LoginPage = () => {
                                 id="passwordInput"
                                 className={`form-control ${style.darkInput}`}
                                 aria-describedby="passwordHelpBlock"
-                                value={password} // Зв'язуємо з password state
-                                onChange={(e) => setPassword(e.target.value)} // Оновлюємо state
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <div className="col-12">
                             <div className="form-check">
                                 <input className={`form-check-input ${style.darkInput}`} type="checkbox" id="gridCheck" />
                                 <label className={`form-check-label ${style.box}`} htmlFor="gridCheck">
-                                    <p>Remember me</p>
-                                    <p>Forgot Password?</p>
+                                    <p className={style.textLast}>Remember me</p>
+                                    <p className={style.textLast}>Forgot Password?</p>
                                 </label>
                             </div>
                         </div>
 
-                        {/* Виведення повідомлення про помилку логіну */}
                         {errorMessage && <p className={style.error}>{errorMessage}</p>}
 
                         <div className="col-12">

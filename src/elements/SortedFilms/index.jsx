@@ -10,8 +10,20 @@ const SortedFilms = ({ films, selectedGenres }) => {
         const fetchData = async () => {
             const genreArray = selectedGenres.length > 0 ? selectedGenres : [];
 
+            // Спроба отримати кешовані дані з localStorage
+            const cacheKey = `${films}_${selectedGenres.join('_')}`;
+            const cachedData = localStorage.getItem(cacheKey);
+
+            if (cachedData) {
+                // Якщо дані є в кеші, встановлюємо їх в стан
+                setTheContent(JSON.parse(cachedData));
+                console.log("Loaded from cache:", cacheKey);
+                return;
+            }
+
             try {
-                const rawResponse = await fetch(`https://localhost:7118/api/${films}/GetAll?take=10`, {
+                // Якщо немає кешу, робимо запит до API
+                const rawResponse = await fetch(`https://localhost:7118/api/${films}/GetAll?take=40`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -28,9 +40,7 @@ const SortedFilms = ({ films, selectedGenres }) => {
                     fetchedFilms.map(async (film) => {
                         const genreResponse = await fetch(`https://localhost:7118/api/${films}/${film.id}`);
                         const genreData = await genreResponse.json();
-                        console.log("URL id: ", `https://localhost:7118/api/${films}/${film.id}`);
                         return { ...film, genres: genreData.genres };
-
                     })
                 );
 
@@ -40,6 +50,11 @@ const SortedFilms = ({ films, selectedGenres }) => {
                     )
                     : filmsWithGenres;
 
+                // Зберігаємо отримані дані в кеш
+                localStorage.setItem(cacheKey, JSON.stringify(filteredFilms));
+                console.log("Saved to cache:", cacheKey);
+
+                // Оновлюємо стан компоненту
                 setTheContent(filteredFilms);
 
             } catch (error) {
@@ -52,14 +67,10 @@ const SortedFilms = ({ films, selectedGenres }) => {
         fetchData();
     }, [films, selectedGenres]);
 
-    console.log("Films: ", films);
-    console.log("Content2: ", theContent);
-    console.log("URL film: ", `https://localhost:7118/api/${films}/GetAll?take=40`)
-
     return (
         <div className={style.container}>
             {theContent.map((item) => (
-                <Link to={`/${films}/${item.id}`} key={item.id} className={style.link}> {/* Додайте Link */}
+                <Link to={`/${films}/${item.id}`} key={item.id} className={style.link}>
                     <Card films={films} title={item.name} picture={item.pictureUrl} year={item.releaseYear} rating={item.rating} />
                 </Link>
             ))}
