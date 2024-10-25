@@ -17,6 +17,7 @@ import SignInPage from '../../pages/SignInPage';
 import LoginPage from './../../pages/LoginPage';
 import { useAuth } from "./../AuthProvider";
 import { ProtectedRoute } from "./../ProtectedRoute";
+import EditCastingPage from '../../pages/EditCastingPage';
 
 const TheRoutes = () => {
     const { token } = useAuth();
@@ -72,6 +73,10 @@ const TheRoutes = () => {
         {
             path: "/create-casting",
             element: <CreateCastingPage />,
+        },
+        {
+            path: "/edit-casting/:castingId",
+            element: <EditCastingPage />,
         },
         {
             path: "/casting-director",

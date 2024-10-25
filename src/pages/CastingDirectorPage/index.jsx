@@ -26,11 +26,13 @@ const CastingDirectorPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            const token = localStorage.getItem('authToken');
             try {
                 const response = await axios.post('https://localhost:7118/api/CastingCalls/GetCastingCallsByAuthenticatedCastingDirectorId', {}, {
                     headers: {
                         'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
                     }
                 });
                 setCastingCalls(response.data);
@@ -109,6 +111,11 @@ const CastingDirectorPage = () => {
 
         return locationMatch && projectTypeMatch && roleTypeMatch;
     });
+
+    const handleCreateCastingPage = () => {
+        navigate(`/create-casting`);
+    };
+
     return (
         <>
             <div className={style.containerItem}>
@@ -117,7 +124,10 @@ const CastingDirectorPage = () => {
                     <UserModal />
                 </div>
                 <div className={style.whiteBlock}>
-                    <p className={style.textBlock1}>Search results for <b>All Locations</b></p>
+                    <div className={style.headerBlock}>
+                        <button type="button" onClick={handleCreateCastingPage} className={style.btnSubmit}>CREATE</button>
+                        <p className={style.textBlock1}>Search results for <b>All Locations</b></p>
+                    </div>
                     <p className={style.textBlock2}>Working Location</p>
                     {locations.map((location) => (
                         <Checkbox key={location} onChange={handleLocationChange} value={location} style={{ marginLeft: '17px' }}>
@@ -139,7 +149,7 @@ const CastingDirectorPage = () => {
 
                     {filteredCastingCalls.length > 0 ? (
                         filteredCastingCalls.map((card) => (
-                            <CastingCard key={card.id} card={card} activeTab={activeTab} />
+                            <CastingCard key={card.id} card={card} activeTab={2} />
                         ))
                     ) : (
                         <p>Loading or no casting calls available</p>

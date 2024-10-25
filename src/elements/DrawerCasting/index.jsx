@@ -3,10 +3,11 @@ import { Button, Drawer } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import style from './style.module.scss';
 import EditCastingModal from '../EditCastingModal'; // Імпорт модалки
+import DeleteCastingModal from '../DeleteCastingModal';
 
-const DrawerCasting = ({ castingId, tabCasting }) => {
+const DrawerCasting = ({ castingId, tabCasting = '1' }) => {
     const [open, setOpen] = useState(false);
-    const [editModalVisible, setEditModalVisible] = useState(false); // Стан для модалки редагування
+    const [isModalVisible, setIsModalVisible] = useState(false);
     const navigate = useNavigate();
 
     const showDrawer = () => {
@@ -25,12 +26,16 @@ const DrawerCasting = ({ castingId, tabCasting }) => {
         navigate('/get-started');
     };
 
-    const showEditModal = () => {
-        setEditModalVisible(true); // Відкриваємо модалку редагування
+    const handleEditCastingPage = () => {
+        navigate(`/edit-casting/${castingId}`);
     };
 
-    const closeEditModal = () => {
-        setEditModalVisible(false); // Закриваємо модалку редагування
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
     };
 
     return (
@@ -39,12 +44,15 @@ const DrawerCasting = ({ castingId, tabCasting }) => {
                 <button type="submit" onClick={showDrawer} className={style.btnSubmit}>SUBMIT</button>
             ) : (
                 <div className={style.buttons}>
-                    <button type="button" onClick={showEditModal} className={style.btnSubmit}>EDIT</button>
-                    <button type="button" onClick={showDrawer} className={style.btnSubmit}>DELETE</button>
+                    <button type="button" onClick={handleEditCastingPage} className={style.btnSubmit}>EDIT</button>
+                    <button type="button" onClick={showModal} className={style.btnSubmit}>DELETE</button>
                 </div>
             )}
-
-            <EditCastingModal visible={editModalVisible} onClose={closeEditModal} castingId={castingId} /> {/* Виклик модалки редагування */}
+            <DeleteCastingModal
+                isVisible={isModalVisible}
+                onCancel={handleCancel}
+                castingId={castingId}
+            />
 
             <Drawer className={style.drawer} title={<img className={style.logo} src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="logo" />} onClose={onClose} open={open}>
                 <h1 className={style.tabContentName}>Ready to submit to this role?</h1>

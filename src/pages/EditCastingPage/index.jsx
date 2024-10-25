@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import style from './style.module.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { ConfigProvider } from 'antd';
-import { Form, Input, DatePicker, Select, Checkbox, Button } from 'antd';
+import { ConfigProvider, Form, Input, DatePicker, Select, Checkbox, Button } from 'antd';
 import moment from 'moment';
 import { IoIosArrowDropleftCircle } from 'react-icons/io';
 
 const { Option } = Select;
 
-const CreateCastingPage = () => {
+const EditCastingPage = () => {
     const navigate = useNavigate();
+    const { castingId } = useParams();
+    const [form] = Form.useForm();
 
     const [castingData, setCastingData] = useState({
         title: '',
@@ -45,7 +46,6 @@ const CreateCastingPage = () => {
     const [locations, setLocations] = useState([]);
     const [selectedRegion, setSelectedRegion] = useState('');
 
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -62,17 +62,25 @@ const CreateCastingPage = () => {
                 setEthnicAppearances(ethnicAppearancesResponse.data);
                 setGenders(gendersResponse.data);
                 setRegions(regionsResponse.data);
+
+                const castingResponse = await axios.get(`https://localhost:7118/api/CastingCalls/${castingId}`);
+                setCastingData(castingResponse.data);
+                form.setFieldsValue({
+                    ...castingResponse.data,
+                    submissionDue: castingResponse.data.submissionDue ? moment(castingResponse.data.submissionDue) : null,
+                    workingDateFrom: castingResponse.data.workingDateFrom ? moment(castingResponse.data.workingDateFrom) : null,
+                    workingDateTo: castingResponse.data.workingDateTo ? moment(castingResponse.data.workingDateTo) : null,
+                });
             } catch (error) {
                 console.error('Error fetching data:', error.response ? error.response.data : error.message);
             }
         };
 
         fetchData();
-    }, []);
+    }, [castingId, form]);
 
     const handleRegionChange = async (regionName) => {
         setSelectedRegion(regionName);
-
         try {
             const response = await axios.post(`https://localhost:7118/api/Location/GetLocations/${regionName}`, { regionName });
             setLocations(response.data);
@@ -87,7 +95,6 @@ const CreateCastingPage = () => {
             locationIds,
         }));
     };
-
 
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
@@ -107,7 +114,7 @@ const CreateCastingPage = () => {
         // Логіка для genderIds
         if (name === 'genderIds') {
             setCastingData((prevData) => {
-                const currentValues = Array.isArray(prevData.genderIds) ? prevData.genderIds : []; // Переконайтеся, що це масив
+                const currentValues = Array.isArray(prevData.genderIds) ? prevData.genderIds : [];
                 if (currentValues.includes(value)) {
                     return {
                         ...prevData,
@@ -125,7 +132,7 @@ const CreateCastingPage = () => {
         // Логіка для ethnicAppearanceIds
         if (name === 'ethnicAppearanceIds') {
             setCastingData((prevData) => {
-                const currentValues = Array.isArray(prevData.ethnicAppearanceIds) ? prevData.ethnicAppearanceIds : []; // Переконайтеся, що це масив
+                const currentValues = Array.isArray(prevData.ethnicAppearanceIds) ? prevData.ethnicAppearanceIds : [];
                 if (currentValues.includes(value)) {
                     return {
                         ...prevData,
@@ -141,27 +148,26 @@ const CreateCastingPage = () => {
         }
     };
 
-
     const handleSubmit = async (values) => {
         const token = localStorage.getItem('authToken');
         try {
-            const response = await axios.post('https://localhost:7118/api/CastingCalls/Create', values, {
+            const response = await axios.put(`https://localhost:7118/api/CastingCalls/Update/${castingId}`, values, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`, // Додаємо токен до заголовків
+                    'Authorization': `Bearer ${token}`,
                 },
             });
             if (response.status === 200) {
-                console.log('Casting created successfully.');
+                console.log('Casting updated successfully.');
                 navigate('/casting-director');
             }
         } catch (error) {
-            console.error('Error creating casting:', error);
+            console.error('Error updating casting:', error);
         }
     };
-    
+
     const handleBack = () => {
-        navigate('/casting-director'); // Перенаправлення на CastingDirectorPage
+        navigate('/casting-director');
     };
 
     return (
@@ -170,7 +176,7 @@ const CreateCastingPage = () => {
                 className={style.arrowBack}
                 onClick={handleBack}
             />
-            <h2>Create Casting Call</h2>
+            <h2>Edit Casting Call</h2>
             <ConfigProvider theme={{
                 token: {
                     colorPrimary: '#800020',
@@ -178,17 +184,16 @@ const CreateCastingPage = () => {
                     colorTextBase: '#ffffff',
                 },
             }}>
-                <Form className={style.form} onFinish={handleSubmit} layout="vertical">
+                <Form form={form} className={style.form} onFinish={handleSubmit} layout="vertical">
                     <Form.Item label="Title" name="title" rules={[{ required: true }]}>
-                        <Input className={style.input} value={castingData.title} onChange={handleChange} />
+                        <Input className={style.input} />
                     </Form.Item>
+
 
                     <Form.Item label="Submission Due" name="submissionDue" rules={[{ required: true }]}>
                         <DatePicker
                             style={{ width: '100%' }}
                             showTime
-                            value={castingData.submissionDue ? moment(castingData.submissionDue) : null}
-                            onChange={(date) => handleChange({ target: { name: 'submissionDue', value: date } })}
                         />
                     </Form.Item>
 
@@ -196,8 +201,6 @@ const CreateCastingPage = () => {
                         <DatePicker
                             style={{ width: '100%' }}
                             showTime
-                            value={castingData.workingDateFrom ? moment(castingData.workingDateFrom) : null}
-                            onChange={(date) => handleChange({ target: { name: 'workingDateFrom', value: date } })}
                         />
                     </Form.Item>
 
@@ -205,14 +208,11 @@ const CreateCastingPage = () => {
                         <DatePicker
                             style={{ width: '100%' }}
                             showTime
-                            value={castingData.workingDateTo ? moment(castingData.workingDateTo) : null}
-                            onChange={(date) => handleChange({ target: { name: 'workingDateTo', value: date } })}
                         />
                     </Form.Item>
 
                     <Form.Item label="Project Type" name="projectTypeId" rules={[{ required: true }]}>
-                        <Select value={castingData.projectTypeId} onChange={(value) => handleChange({ target: { name: 'projectTypeId', value } })}>
-                            <Option value="">Select Project Type</Option>
+                        <Select>
                             {projectTypes.map((type) => (
                                 <Option key={type.id} value={type.id}>{type.projectTypeName}</Option>
                             ))}
@@ -220,8 +220,7 @@ const CreateCastingPage = () => {
                     </Form.Item>
 
                     <Form.Item label="Role Type" name="roleTypeId" rules={[{ required: true }]}>
-                        <Select value={castingData.roleTypeId} onChange={(value) => handleChange({ target: { name: 'roleTypeId', value } })}>
-                            <Option value="">Select Role Type</Option>
+                        <Select>
                             {roleTypes.map((type) => (
                                 <Option key={type.id} value={type.id}>{type.roleTypeName}</Option>
                             ))}
@@ -229,23 +228,23 @@ const CreateCastingPage = () => {
                     </Form.Item>
 
                     <Form.Item label="Playable Age From" name="playableAgeFrom" rules={[{ required: true }]}>
-                        <Input className={style.input} type="number" value={castingData.playableAgeFrom} onChange={handleChange} />
+                        <Input className={style.input}  type='number'/>
                     </Form.Item>
 
                     <Form.Item label="Playable Age To" name="playableAgeTo" rules={[{ required: true }]}>
-                        <Input className={style.input} type="number" value={castingData.playableAgeTo} onChange={handleChange} />
+                        <Input className={style.input}  type='number' />
                     </Form.Item>
 
                     <Form.Item label="Payment" name="payment" rules={[{ required: true }]}>
-                        <Input className={style.input} value={castingData.payment} onChange={handleChange} />
+                        <Input className={style.input} />
                     </Form.Item>
 
                     <Form.Item label="Union Details" name="unionDetails" rules={[{ required: true }]}>
-                        <Input className={style.input} value={castingData.unionDetails} onChange={handleChange} />
+                        <Input className={style.input}  />
                     </Form.Item>
 
                     <Form.Item label="Role Description" name="roleDescription" rules={[{ required: true }]}>
-                        <Input.TextArea value={castingData.roleDescription} onChange={handleChange} />
+                        <Input.TextArea value={castingData.roleDescription}  />
                     </Form.Item>
 
                     <Form.Item label="Rate Details" name="rateDetails" rules={[{ required: true }]}>
@@ -273,11 +272,15 @@ const CreateCastingPage = () => {
                     </Form.Item>
 
                     <Form.Item name="isAnyEthnicAppearanceAccepted" valuePropName="checked">
-                        <Checkbox checked={castingData.isAnyEthnicAppearanceAccepted} onChange={handleChange}>Is Any Ethnic Appearance Accepted</Checkbox>
+                        <Checkbox checked={castingData.isAnyEthnicAppearanceAccepted} onChange={handleChange}>
+                            Is Any Ethnic Appearance Accepted
+                        </Checkbox>
                     </Form.Item>
 
                     <Form.Item name="isAnyGenderAccepted" valuePropName="checked">
-                        <Checkbox checked={castingData.isAnyGenderAccepted} onChange={handleChange}>Is Any Gender Accepted</Checkbox>
+                        <Checkbox checked={castingData.isAnyGenderAccepted} onChange={handleChange}>
+                            Is Any Gender Accepted
+                        </Checkbox>
                     </Form.Item>
 
                     <Form.Item label="Region" name="region" rules={[{ required: true }]}>
@@ -293,7 +296,7 @@ const CreateCastingPage = () => {
                         <Select
                             mode="multiple"
                             value={castingData.locationIds}
-                            onChange={(values) => handleLocationChange({ target: { value: values } })}
+                            onChange={(values) => handleLocationChange(values)}
                         >
                             {locations.map((location) => (
                                 <Option key={location.id} value={location.id}>{location.locationName}</Option>
@@ -326,7 +329,7 @@ const CreateCastingPage = () => {
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">Create Casting Call</Button>
+                        <Button type="primary" htmlType="submit">Save</Button>
                     </Form.Item>
                 </Form>
             </ConfigProvider>
@@ -334,4 +337,4 @@ const CreateCastingPage = () => {
     );
 };
 
-export default CreateCastingPage;
+export default EditCastingPage;

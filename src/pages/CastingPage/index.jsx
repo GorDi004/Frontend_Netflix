@@ -119,7 +119,19 @@ const CastingPage = () => {
                     <UserModal />
                 </div>
                 <div className={style.whiteBlock}>
-                    <p className={style.textBlock1}>Search results for <b>All Locations</b></p>
+                    {/* <p className={style.textBlock1}>Search results for <b>All Locations</b></p> */}
+                    <p className={style.textBlock1}>
+                        Search results for <b>{(selectedLocations.length === 0 && selectedProjectTypes.length === 0 && selectedRoleTypes.length === 0) ? 'All Locations' : ''}</b>
+                        {(selectedLocations.length > 0 || selectedProjectTypes.length > 0 || selectedRoleTypes.length > 0) && (
+                            <b>
+                                {selectedLocations.length > 0 && ` Locations: ${selectedLocations.join(', ')}`}
+                                {selectedLocations.length > 0 && (selectedProjectTypes.length > 0 || selectedRoleTypes.length > 0) && ', '}
+                                {selectedProjectTypes.length > 0 && ` Project Types: ${selectedProjectTypes.join(', ')}`}
+                                {selectedProjectTypes.length > 0 && selectedRoleTypes.length > 0 && ', '}
+                                {selectedRoleTypes.length > 0 && ` Role Types: ${selectedRoleTypes.join(', ')}`}
+                            </b>
+                        )}
+                    </p>
                     <p className={style.textBlock2}>Working Location</p>
                     {locations.map((location) => (
                         <Checkbox key={location} onChange={handleLocationChange} value={location} style={{ marginLeft: '17px' }}>
@@ -141,7 +153,7 @@ const CastingPage = () => {
 
                     {filteredCastingCalls.length > 0 ? (
                         filteredCastingCalls.map((card) => (
-                            <CastingCard key={card.id} card={card} activeTab={activeTab} />
+                            <CastingCard key={card.id} card={card}  />
                         ))
                     ) : (
                         <p>Loading or no casting calls available</p>
