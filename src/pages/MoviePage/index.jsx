@@ -5,6 +5,7 @@ import Header from '../../elements/Header';
 import { IoIosArrowDropleftCircle } from 'react-icons/io';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
+import SeriesEpisodes from '../../elements/SeriesEpisodes';
 
 
 const MoviePage = () => {
@@ -32,8 +33,6 @@ const MoviePage = () => {
         return totalMinutes;
     };
 
-    console.log("FILMS: ", type)
-    console.log("UUUURRRRLLLL:", `https://localhost:7118/api/${type}/${id}`)
 
     useEffect(() => {
         const fetchMovieData = async () => {
@@ -90,6 +89,7 @@ const MoviePage = () => {
 
     return (
         <>
+
             <Header />
             <div className={style.backAndTitle}>
                 <svg className={style.arrowBack}
@@ -177,9 +177,17 @@ const MoviePage = () => {
                     </button>
                 </div>
             </div>
-            <video id="targetSection" className={style.videoBlock} controls>
-                <source src={movie.videoUrl} type="video/mp4" />
-            </video>
+            
+            {type === 'Series'
+                ?
+                <SeriesEpisodes id={id} />
+                :
+                <>
+                    <video id="targetSection" className={style.videoBlock} controls>
+                        <source src={movie.videoUrl} type="video/mp4" />
+                    </video>
+                </>
+            }
         </>
     );
 }

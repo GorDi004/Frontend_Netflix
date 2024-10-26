@@ -20,7 +20,7 @@
     z-index: 10;
 
     &:hover {
-        color: #936133;
+        color: $colorPrimary;
     }
 }
 
@@ -121,7 +121,8 @@
     cursor: pointer;
 
     &:hover {
-        background-color: #936133;
+        background-color: $colorPrimary;
+        color:#F9F1E4;
     }
 
     p {
@@ -158,7 +159,7 @@
     cursor: pointer;
 
     &:hover {
-        background-color: #936133;
+        background-color: $colorPrimary;
     }
 
     p {

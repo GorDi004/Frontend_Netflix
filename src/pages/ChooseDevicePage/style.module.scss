@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .text {
     display: flex;
     align-items: center;
@@ -15,7 +17,7 @@
     cursor: pointer;
 
     &:hover {
-        color: #936133;
+        color: $colorPrimary;
     }
 }
 
@@ -58,7 +60,7 @@
         background-color: #F9F1E4;
 
         .buttonIcon {
-            fill: #936133;
+            fill: $colorPrimary;
         }
 
         .buttonName {
@@ -71,7 +73,7 @@
             border-color: #F9F1E4; 
 
             .buttonIcon {
-                fill: #936133; 
+                fill: $colorPrimary; 
             }
 
             .buttonName {
@@ -92,7 +94,7 @@
     cursor: pointer;
 
     &.active  {
-        background-color: #936133;
+        background-color: $colorPrimary;
         color: #F9F1E4;
     }
 }

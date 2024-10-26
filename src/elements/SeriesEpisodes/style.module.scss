@@ -1,0 +1,50 @@
+.episodesTitle{
+    margin-top: 7rem;;
+}
+
+.selectContainer{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    justify-content: center;
+    margin:0 120px;
+}
+
+.episodeDetailsContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding:1rem;
+
+}
+.episodeImage {
+    width: 25vw;
+    height: 70vh;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    object-fit: cover;
+
+}
+
+.episodeDetails p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #333;
+    text-align: center;
+}
+
+.videoContainer {
+    max-width: 800px;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.videoPlayer {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}

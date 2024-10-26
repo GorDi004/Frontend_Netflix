@@ -72,7 +72,8 @@
     cursor: pointer;
 
     &:hover {
-        background-color: #936133;
+        background-color: $colorPrimary;
+        color:#F9F1E4;
     }
 
     p {
@@ -105,7 +106,7 @@
     cursor: pointer;
 
     &:hover {
-        background-color: #936133;
+        background-color: $colorPrimary;
     }
 
     p {
