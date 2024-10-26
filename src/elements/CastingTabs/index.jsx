@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs } from 'antd';
+import { ConfigProvider, Tabs } from 'antd';
 import style from './style.module.scss';
 
 const CastingTabs = ({ activeTab, setActiveTab }) => {
@@ -41,13 +41,20 @@ const CastingTabs = ({ activeTab, setActiveTab }) => {
     ];
 
     return (
-        <Tabs activeKey={activeTab} onChange={setActiveTab} className={style.tabs}>
-            {items.map(item => (
-                <Tabs.TabPane key={item.key} tab={item.label}>
-                    {item.children}
-                </Tabs.TabPane>
-            ))}
-        </Tabs>
+        <ConfigProvider theme={{
+            token: {
+                colorPrimary: '#800020',
+                colorBgBase: '#1f1f1f',
+            },
+        }}>
+            <Tabs activeKey={activeTab} onChange={setActiveTab} className={style.tabs}>
+                {items.map(item => (
+                    <Tabs.TabPane key={item.key} tab={item.label}>
+                        {item.children}
+                    </Tabs.TabPane>
+                ))}
+            </Tabs>
+        </ConfigProvider>
     );
 };
 

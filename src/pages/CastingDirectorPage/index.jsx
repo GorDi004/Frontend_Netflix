@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import style from './style.module.scss'
-import { Checkbox, Tabs } from 'antd';
+import { Checkbox, ConfigProvider, Tabs } from 'antd';
 import BurgerMenu from '../../elements/BurgerMenu';
 import UserModal from '../../elements/UserModal';
 import axios from 'axios';
@@ -128,24 +128,31 @@ const CastingDirectorPage = () => {
                         <button type="button" onClick={handleCreateCastingPage} className={style.btnSubmit}>CREATE</button>
                         <p className={style.textBlock1}>Search results for <b>All Locations</b></p>
                     </div>
-                    <p className={style.textBlock2}>Working Location</p>
-                    {locations.map((location) => (
-                        <Checkbox key={location} onChange={handleLocationChange} value={location} style={{ marginLeft: '17px' }}>
-                            {location}
-                        </Checkbox>
-                    ))}
-                    <p className={style.textBlock2}>Project Type</p>
-                    {projectTypes.map((projectType) => (
-                        <Checkbox key={projectType.id} onChange={handleProjectTypeChange} value={projectType.projectTypeName} style={{ marginLeft: '17px' }}>
-                            {projectType.projectTypeName}
-                        </Checkbox>
-                    ))}
-                    <p className={style.textBlock2}>Role Type</p>
-                    {roleTypes.map((roleType) => (
-                        <Checkbox key={roleType.id} onChange={handleRoleTypeChange} value={roleType.roleTypeName} style={{ marginLeft: '17px' }}>
-                            {roleType.roleTypeName}
-                        </Checkbox>
-                    ))}
+                    <ConfigProvider theme={{
+                        token: {
+                            colorPrimary: '#800020',
+                            colorBgBase: '#1f1f1f',
+                        },
+                    }}>
+                        <p className={style.textBlock2}>Working Location</p>
+                        {locations.map((location) => (
+                            <Checkbox key={location} onChange={handleLocationChange} value={location} style={{ marginLeft: '17px' }}>
+                                {location}
+                            </Checkbox>
+                        ))}
+                        <p className={style.textBlock2}>Project Type</p>
+                        {projectTypes.map((projectType) => (
+                            <Checkbox key={projectType.id} onChange={handleProjectTypeChange} value={projectType.projectTypeName} style={{ marginLeft: '17px' }}>
+                                {projectType.projectTypeName}
+                            </Checkbox>
+                        ))}
+                        <p className={style.textBlock2}>Role Type</p>
+                        {roleTypes.map((roleType) => (
+                            <Checkbox key={roleType.id} onChange={handleRoleTypeChange} value={roleType.roleTypeName} style={{ marginLeft: '17px' }}>
+                                {roleType.roleTypeName}
+                            </Checkbox>
+                        ))}
+                    </ConfigProvider>
 
                     {filteredCastingCalls.length > 0 ? (
                         filteredCastingCalls.map((card) => (

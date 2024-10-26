@@ -1,0 +1,52 @@
+@import '../../styles/variables';
+
+.container{
+    background-color: #f9f1e4;
+    color: #262425;
+    padding: 0.5em;
+    margin:10px;
+
+}
+
+.img{
+    background-color: #3a3a3a;
+    width:280px;
+    height: 360px;
+}
+
+.flexContainer{
+    margin:0.5em;
+    display:flex;
+    gap:1.5em;
+    padding:10px;
+}
+
+.cardDetails{
+    margin: 0px, 50rem, 0px, 50rem;
+    width:565px;
+}
+
+.title{
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 20px;
+    color: #262425;
+}
+
+.content{
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 14px;
+    color: #262425;
+}
+
+.moreButton{
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 16px;
+    color: #800020;
+    border: 0px solid red;
+    display: block;
+margin-left: auto;
+}
+

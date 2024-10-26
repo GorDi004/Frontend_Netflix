@@ -1,5 +1,5 @@
 import React, { act, useState } from 'react';
-import { Tabs } from 'antd';
+import { ConfigProvider, Tabs } from 'antd';
 import style from './style.module.scss';
 import SortedFilms from '../SortedFilms';
 import CarouselGenres from '../CarouselGenres';
@@ -83,24 +83,31 @@ const GenreTabs = () => {
     console.log("Selected Genres in Tabs: ", selectedGenres);
 
     return (
-        <Tabs activeKey={activeTab} tabBarStyle={{ borderBottom: 'none' }} onChange={handleTabChange} className={style.tabsContainer}>
-            {tabs.map((tab) => (
-                <Tabs.TabPane
-                    tab={
-                        <span className={activeTab === tab.key ? style.activeTab : ''}>
-                            <div className={style.tabs}>
-                                {tab.icon}
-                                <p>{tab.label}</p>
-                            </div>
-                        </span>
-                    }
-                    key={tab.key}
-                >
-                    <CarouselGenres onGenreChange={activeTab === tab.key ? handleGenreChange : null} />
-                    <SortedFilms selectedGenres={activeTab === tab.key ? selectedGenres : []} films={activeTab === tab.key ? tab.genre : []} />
-                </Tabs.TabPane>
-            ))}
-        </Tabs>
+        <ConfigProvider theme={{
+            token: {
+                colorPrimary: '#800020',
+                colorBgBase: '#1f1f1f',
+            },
+        }}>
+            <Tabs activeKey={activeTab} tabBarStyle={{ borderBottom: 'none' }} onChange={handleTabChange} className={style.tabsContainer}>
+                {tabs.map((tab) => (
+                    <Tabs.TabPane
+                        tab={
+                            <span className={activeTab === tab.key ? style.activeTab : ''}>
+                                <div className={style.tabs}>
+                                    {tab.icon}
+                                    <p>{tab.label}</p>
+                                </div>
+                            </span>
+                        }
+                        key={tab.key}
+                    >
+                        <CarouselGenres onGenreChange={activeTab === tab.key ? handleGenreChange : null} />
+                        <SortedFilms selectedGenres={activeTab === tab.key ? selectedGenres : []} films={activeTab === tab.key ? tab.genre : []} />
+                    </Tabs.TabPane>
+                ))}
+            </Tabs>
+        </ConfigProvider>
     );
 };
 

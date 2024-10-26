@@ -18,6 +18,8 @@ import LoginPage from './../../pages/LoginPage';
 import { useAuth } from "./../AuthProvider";
 import { ProtectedRoute } from "./../ProtectedRoute";
 import EditCastingPage from '../../pages/EditCastingPage';
+import NewsPage from '../../pages/NewsPage';
+import NewsDetailsPage from '../../pages/NewsDetailsPage';
 
 const TheRoutes = () => {
     const { token } = useAuth();
@@ -66,6 +68,7 @@ const TheRoutes = () => {
             path: "/:type/:id",
             element: <MoviePage />,
         },
+        //castings
         {
             path: "/casting",
             element: <CastingPage />,
@@ -106,6 +109,18 @@ const TheRoutes = () => {
             path: "/return-homepage",
             element: <ReturnHomePage />,
         },
+        //news
+
+        {
+            path: "/news",
+            element: <NewsPage />,
+        },
+        {
+            path: "/news-details/:id",
+            element: <NewsDetailsPage />,
+        },
+
+        //pages
         {
             path: "/device",
             element: <ChooseDevicePage />,

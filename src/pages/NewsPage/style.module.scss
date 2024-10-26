@@ -1,0 +1,31 @@
+@import '../../styles/variables.scss';
+
+.newsTitle {
+    margin: 0 0 1rem 0;
+    max-width: 30rem;
+    text-align: center;
+}
+
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    z-index: 0;
+}
+
+.contentBlock{
+    display: flex;
+    flex-direction: column;
+    margin:1rem, 10rem, 1rem, 10rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.link{
+    text-decoration: none;
+}

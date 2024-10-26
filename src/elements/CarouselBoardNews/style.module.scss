@@ -1,0 +1,20 @@
+@import '../../styles/variables.scss';
+
+.contentArea {
+    background-color: $secondary-color;
+    background-size: cover;
+    padding: 10rem;
+    z-index: 10;
+    width: 100%;
+    height: 600px;
+}
+
+.newsTitle {
+    margin: 0 0 1rem 0;
+    max-width: 35rem;
+}
+
+.newsContext {
+    width: 35rem;
+    color:$primary-color;
+}

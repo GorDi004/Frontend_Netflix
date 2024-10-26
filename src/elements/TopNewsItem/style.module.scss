@@ -1,0 +1,50 @@
+.topNewsItem{
+    display:flex;
+    flex-direction: row;
+    gap:10px;
+    width: 100%;
+    height: 150px;
+    border:1px solid #5b5b5b;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+.itemInfo{
+    width:250px;
+}
+
+.newsImg{
+    width:130px;
+    height: 120px;
+    background-color: #3a3a3a;
+    object-fit: cover;
+}
+
+.itemTitle{
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: #f9f1e4;
+    font-weight: 400;
+}
+
+.itemPublishingInfo{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    font-family: 'Poppins';
+    font-size: 12px;
+    color: #bebebe;
+    font-weight: 400;
+}
+
+.itemReadMoreButton{
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: #f9f1e4;
+    font-weight: 400;
+    width:130px;
+    height: 20px;
+    border: 0px solid red;
+    background-color: #262425;
+    margin-bottom: 0px;
+}
